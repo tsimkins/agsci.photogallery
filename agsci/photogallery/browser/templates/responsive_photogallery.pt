@@ -1,0 +1,82 @@
+<metal:page define-macro="master">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+<body tal-define="isAnon context/@@plone_portal_state/anonymous;">
+
+    <metal:style fill-slot="style_slot">
+    </metal:style>
+    
+    <metal:javascriptslot fill-slot="javascript_head_slot">
+		<tal:script replace="structure string:&lt;script id='img-wrapper-tmpl' type='text/x-jquery-tmpl'&gt;" />
+			<div class="rg-image-wrapper">
+				<div class="rg-image"></div>
+				<div class="rg-loading"></div>
+				<div class="rg-caption-wrapper">
+					<div class="rg-caption" style="display:none;">
+                        <h2><a tal:omit-tag="isAnon"></a></h2>
+						<p></p>
+					</div>
+				</div>
+				{{if itemsCount > 1}}
+					<div class="rg-image-nav">
+						<a href="#" class="rg-image-nav-prev">Previous Image</a>
+						<a href="#" class="rg-image-nav-next">Next Image</a>
+					</div>
+				{{/if}}
+			</div>
+		<tal:script replace="structure string:&lt;/script&gt;" />
+    </metal:javascriptslot>
+    
+    
+    <metal:content-core fill-slot="content-core">
+
+    <div metal:define-macro="text-field-view"
+            id="parent-fieldname-text" class="stx"
+            tal:define="text here/getText|nothing"
+            tal:condition="text">
+        <div metal:define-slot="inside" tal:replace="structure text">The body</div>
+    </div>
+    
+        <div id="rg-gallery" class="rg-gallery">
+            <div class="rg-thumbs">
+                <!-- Elastislide Carousel Thumbnail Viewer -->
+                <div class="es-carousel-wrapper">
+                    <div class="es-nav">
+                        <span class="es-nav-prev">Previous</span>
+                        <span class="es-nav-next">Next</span>
+                    </div>
+                    <div class="es-carousel">
+                        <ul>
+                            <li tal:repeat="i view/getImages">
+                                <a tal:attributes="href string:${i/getURL}/image_galleryzoom">
+                                    <img tal:attributes="src string:${i/getURL}/image_gallerythumb;
+                                                         data-large string:${i/getURL}/image_gallery; 
+                                                         data-xlarge string:${i/getURL}/image_galleryzoom; 
+                                                         alt i/Title; 
+                                                         data-title i/Title; 
+                                                         data-description i/Description;
+                                                         data-editlink editlink;"
+                                          tal:define="editlink string:${i/getURL}/edit;
+                                                      editlink python: not isAnon and editlink or ''"
+                                             />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Elastislide Carousel Thumbnail Viewer -->
+            </div><!-- rg-thumbs -->
+        </div><!-- rg-gallery -->
+    
+    </metal:content-core>
+
+</body>
+</html>
+</metal:page>
+
