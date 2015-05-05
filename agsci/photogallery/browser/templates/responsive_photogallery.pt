@@ -61,7 +61,8 @@
                                                          alt i/Title; 
                                                          data-title i/Title; 
                                                          data-description i/Description;
-                                                         data-editlink editlink;"
+                                                         data-editlink editlink;
+                                                         data-image-fit python:view.getImageFit(i)"
                                           tal:define="editlink string:${i/getURL}/edit;
                                                       editlink python: not isAnon and editlink or ''"
                                              />

@@ -237,9 +237,10 @@ jQuery(function() {
 					title		= $thumb.data('title');
 					desc		= $thumb.data('description');
 					editlink	= $thumb.data('editlink');
+					image_fit	= $thumb.data('image-fit');
 
 				jQuery('<img/>').load( function() {
-					$rgGallery.find('div.rg-image').empty().append('<a class="fancybox" href="' + xlargesrc + '"><img src="' + largesrc + '" /></a>');
+					$rgGallery.find('div.rg-image').empty().append('<a class="fancybox ' + image_fit +'" href="' + xlargesrc + '"><img src="' + largesrc + '" /></a>');
 					
 					if( title )
 					{

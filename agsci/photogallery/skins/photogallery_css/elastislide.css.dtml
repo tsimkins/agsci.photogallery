@@ -7,22 +7,16 @@
 
 /* Elastislide Style */
 .es-carousel-wrapper{
-	background: #000000;
+	background: transparent;
 	padding:10px 27px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
 	position:relative;
-	-moz-box-shadow:0px 1px 3px rgba(0, 0, 0, 0.9);
-	-webkit-box-shadow:0px 1px 3px rgba(0, 0, 0, 0.9);
-	box-shadow:0px 1px 3px rgba(0, 0, 0, 0.9);
 	position:relative;
 	margin-top: 10px;
 	margin-bottom: 10px;	
 }
 .es-carousel{
 	overflow:hidden;
-	background:#000;
+	background: transparent;;
 }
 .es-carousel ul{
 	display:none;
@@ -31,6 +25,8 @@
 	height:100%;
 	float:left;
 	display:block;
+	list-style: none !important;
+	list-style-image: none !important;
 }
 .es-carousel ul li a{
 	display:block;
