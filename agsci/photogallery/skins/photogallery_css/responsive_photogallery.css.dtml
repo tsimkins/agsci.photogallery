@@ -146,7 +146,7 @@
 }
 
 .rg-image {
-    height: 441px;
+    height: 480px;
     width: 100%;
     vertical-align: middle;
 }
