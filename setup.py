@@ -29,7 +29,8 @@ setup(name='agsci.photogallery',
       # -*- Extra requirements: -*-
       ],
     entry_points="""
-      # -*- Entry points: -*-
+        [z3c.autoinclude.plugin]
+        target = plone
       """,
     )
 
